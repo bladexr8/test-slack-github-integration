@@ -1,4 +1,6 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
+import CreateIssueDefinition from "./functions/create_issue/definition.ts";
+import CreateNewIssueWorkflow from "./workflows/create_new_issue.ts";
 
 /**
  * The app manifest contains the app's configuration. This
@@ -6,11 +8,11 @@ import { Manifest } from "deno-slack-sdk/mod.ts";
  * https://api.slack.com/future/manifest
  */
 export default Manifest({
-  name: "github-functions-app",
-  description: "A blank template for building Slack apps with Deno",
+  name: "Workflows for GitHub",
+  description: "Bringing oft-used GitHub functionality into Slack",
   icon: "assets/default_new_app_icon.png",
-  functions: [],
-  workflows: [],
-  outgoingDomains: [],
+  functions: [CreateIssueDefinition],
+  workflows: [CreateNewIssueWorkflow],
+  outgoingDomains: ["api.github.com"],
   botScopes: ["commands", "chat:write", "chat:write.public"],
 });
